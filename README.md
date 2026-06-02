@@ -1,5 +1,7 @@
 # Boost Marine — сайт и админка
 
+> **Полная техническая документация:** [docs/TECHNICAL.md](docs/TECHNICAL.md) · **GitHub:** [github.com/5eeee/boost-marine](https://github.com/5eeee/boost-marine) · **Прод:** https://boostmarine.ru/
+
 ## Структура проекта
 
 ```
