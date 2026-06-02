@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .env
+admin/config/.env
 admin/archive/
 admin/track_debug.log
 site/**/track_debug.log

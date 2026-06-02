@@ -25,10 +25,12 @@ header('X-XSS-Protection: 1; mode=block');
 header('Referrer-Policy: strict-origin-when-cross-origin');
 
 // ==================== НАСТРОЙКИ БАЗЫ ДАННЫХ ====================
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'u3413843_boostmarine_db');
-define('DB_USER', 'u3413843_admin');
-define('DB_PASS', 'BoostMarineAdmin123'); // Заменить на реальный пароль
+require_once __DIR__ . '/load_env.php';
+
+define('DB_HOST', bm_env('DB_HOST', 'localhost'));
+define('DB_NAME', bm_env('DB_NAME'));
+define('DB_USER', bm_env('DB_USER'));
+define('DB_PASS', bm_env('DB_PASS'));
 
 // ==================== ПУТИ И КОНСТАНТЫ ====================
 define('BASE_URL', 'https://admin.boostmarine.ru/');
@@ -42,34 +44,34 @@ define('ALLOWED_MEDIA_EXTENSIONS', ['jpg', 'jpeg', 'png', 'webp', 'mp4', 'webm']
 define('MAX_MEDIA_SIZE', 50 * 1024 * 1024); // 50 МБ для видео
 
 // ==================== НАСТРОЙКИ ПОЧТЫ ====================
-define('SMTP_HOST', 'smtp.mail.ru');
-define('SMTP_PORT', 465);
-define('SMTP_USER', 'bmrtty@internet.ru');
-define('SMTP_PASS', 'mnxzle3JMvoUPwx2HW1q');
-define('SMTP_FROM', 'bmrtty@internet.ru');
-define('SMTP_FROM_NAME', 'Boost Marine Admin');
+define('SMTP_HOST', bm_env('SMTP_HOST', 'smtp.mail.ru'));
+define('SMTP_PORT', (int) bm_env('SMTP_PORT', '465'));
+define('SMTP_USER', bm_env('SMTP_USER'));
+define('SMTP_PASS', bm_env('SMTP_PASS'));
+define('SMTP_FROM', bm_env('SMTP_FROM'));
+define('SMTP_FROM_NAME', bm_env('SMTP_FROM_NAME', 'Boost Marine Admin'));
 
 // ==================== НАСТРОЙКИ ЯНДЕКС.МЕТРИКИ ====================
-define('METRICA_COUNTER_ID', '106842718');
-define('METRICA_OAUTH_TOKEN', 'y0__xDD99XGBBjFzj4g4uX40hYw_-CR_AcNymJqgvroCHhDCuUY5Xq_YXv4Rw');
+define('METRICA_COUNTER_ID', bm_env('METRICA_COUNTER_ID'));
+define('METRICA_OAUTH_TOKEN', bm_env('METRICA_OAUTH_TOKEN'));
 define('METRICA_API_URL', 'https://api-metrika.yandex.net/stat/v1/data');
 
 // ==================== НАСТРОЙКИ ЯНДЕКС.ВЕБМАСТЕР ====================
 // Токен должен иметь scope: webmaster:verify, webmaster:manage
 // Получить: https://oauth.yandex.ru/authorize?response_type=token&client_id=49dd5a4167f341a6ad1c010ba07af4c7
-define('WEBMASTER_OAUTH_TOKEN', 'y0__xDD99XGBBjezj4g6MSD0xYw_-CR_AefMcJcwkl0vZUr4tJQD8U57u6taA');
+define('WEBMASTER_OAUTH_TOKEN', bm_env('WEBMASTER_OAUTH_TOKEN'));
 
 // ==================== НАСТРОЙКИ GOOGLE SHEETS ====================
-define('GOOGLE_SPREADSHEET_ID', '1B6GURoeE_HaL9ZkZ-kkNpx1dSngaFiFWQZiVk9-9C-c');
+define('GOOGLE_SPREADSHEET_ID', bm_env('GOOGLE_SPREADSHEET_ID'));
 
 // ==================== НАСТРОЙКИ TELEGRAM БОТА ====================
-define('TG_BOT_TOKEN', '8278605123:AAHOzai7HhREgfJZTDggJAg-7dz0ajnnlwQ');
-define('TG_ADMIN_CHAT_ID', ''); // Заполните Chat ID администратора для уведомлений
+define('TG_BOT_TOKEN', bm_env('TG_BOT_TOKEN'));
+define('TG_ADMIN_CHAT_ID', bm_env('TG_ADMIN_CHAT_ID'));
 
 // ==================== НАСТРОЙКИ AI (Своя нейросеть / Ollama) ====================
-define('AI_API_URL', 'http://localhost:11434'); // Базовый URL Ollama (вызов из браузера)
-define('AI_MODEL', 'qwen2.5');   // Модель: qwen2.5, llama3, mistral, gemma2 и др.
-define('AI_API_KEY', '');        // Необязательно — Ollama работает без ключа
+define('AI_API_URL', bm_env('AI_API_URL', 'http://localhost:11434'));
+define('AI_MODEL', bm_env('AI_MODEL', 'qwen2.5'));
+define('AI_API_KEY', bm_env('AI_API_KEY'));
 
 /**
  * Отправка уведомления администратору в Telegram

@@ -11,14 +11,15 @@
 require_once __DIR__ . '/../config.php';
 
 // Конфигурация
-define('MAX_RECORDS', 500);               // Максимальное количество записей (оставляем последние)
-define('MAX_DAYS', 30);                    // Удалять записи старше 30 дней
-define('BOT_TOKEN', '8278605123:AAHOzai7HhREgfJZTDggJAg-7dz0ajnnlwQ'); // Токен бота
-define('ADMIN_CHAT_ID', '1824653479');     // ID чата администратора (замените на реальный)
+define('MAX_RECORDS', 500);
+define('MAX_DAYS', 30);
 
 // Функция отправки сообщения в Telegram
 function sendTelegramMessage($chatId, $text) {
-    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendMessage";
+    if (!defined('TG_BOT_TOKEN') || TG_BOT_TOKEN === '') {
+        return false;
+    }
+    $url = "https://api.telegram.org/bot" . TG_BOT_TOKEN . "/sendMessage";
     $data = [
         'chat_id' => $chatId,
         'text' => $text,
@@ -90,7 +91,7 @@ try {
         }
         $message .= "Осталось записей в analytics_visits: $remaining\n";
         $message .= "Дата очистки: " . date('Y-m-d H:i:s');
-        sendTelegramMessage(ADMIN_CHAT_ID, $message);
+        sendTelegramMessage(TG_ADMIN_CHAT_ID, $message);
     }
 
     // Логируем в файл
@@ -100,5 +101,5 @@ try {
 } catch (Exception $e) {
     $pdo->rollBack();
     error_log('Cleanup error: ' . $e->getMessage());
-    sendTelegramMessage(ADMIN_CHAT_ID, "<b>❌ Ошибка при очистке БД</b>\n" . $e->getMessage());
+    sendTelegramMessage(TG_ADMIN_CHAT_ID, "<b>❌ Ошибка при очистке БД</b>\n" . $e->getMessage());
 }
