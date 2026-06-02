@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "*",
+        "google/apiclient": "^2.19"
+    }
+}

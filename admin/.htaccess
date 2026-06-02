@@ -1,0 +1,42 @@
+# .htaccess для административной панели Boost Marine
+# Расположение: корень поддомена admin.boostmarine.ru
+
+# Устанавливаем файл, открываемый по умолчанию
+DirectoryIndex login.php
+
+# Запрещаем просмотр содержимого папок
+Options -Indexes
+
+# Кодировка по умолчанию
+AddDefaultCharset utf-8
+
+# Скрываем информацию о сервере
+ServerSignature Off
+
+# ==================== ЗАЩИТА ФАЙЛОВ ====================
+
+# Запрещаем доступ к конфигурационным и служебным файлам
+<Files ~ "^(config\.php|install\.sql|.*\.log|composer\.(json|lock)|README\.md)$">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Запрещаем доступ к скрытым файлам (начинающимся с точки)
+<FilesMatch "^\.">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ==================== ЗАПРЕТ ВЫПОЛНЕНИЯ PHP В UPLOADS ====================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Любой запрос к файлам с PHP-расширениями в папке uploads и её подпапках возвращает 403 Forbidden
+    RewriteRule ^uploads/.*\.(php|phtml|php3|php4|php5|php7|php8|phps)$ - [F,L]
+</IfModule>
+
+# ==================== ОПТИМИЗАЦИЯ (ОПЦИОНАЛЬНО) ====================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Если нужны красивые URL (не обязательно для админки), можно добавить правила позже

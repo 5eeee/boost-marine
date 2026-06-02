@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /track.php
+Disallow: /index.php
+
+# Sitemap
+Sitemap: https://boostmarine.ru/sitemap.xml
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /track.php
+Disallow: /index.php
+Host: https://boostmarine.ru

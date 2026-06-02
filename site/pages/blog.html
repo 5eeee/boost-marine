@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106842718', 'ym');
+        ym(106842718, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106842718" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бортжурнал | Boost Marine</title>
+    <meta name="description" content="Полезные статьи о ремонте, обслуживании и эксплуатации яхт, катеров и гидроциклов от специалистов Boost Marine.">
+    <link rel="canonical" href="https://boostmarine.ru/blog">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Бортжурнал | Boost Marine">
+    <meta property="og:description" content="Полезные статьи о ремонте, обслуживании и эксплуатации яхт, катеров и гидроциклов.">
+    <meta property="og:url" content="https://boostmarine.ru/blog">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/assets/css/style.css?v=20260608">
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png">
+    <style>
+        /* ===== Blog Hero ===== */
+        .blog-hero {
+            position: relative;
+            padding: 140px 0 32px;
+            text-align: center;
+            background: var(--dark-color);
+        }
+        .blog-hero__title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .blog-hero__title span {
+            color: #fff;
+            -webkit-text-fill-color: #fff;
+            background: none;
+        }
+        .blog-hero__sub,
+        .blog-hero__line {
+            display: none;
+        }
+
+        /* ===== Blog Grid ===== */
+        .blog-section { padding: 24px 0 100px; background: var(--bg); }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        /* ===== Blog Card ===== */
+        .blog-card {
+            background: var(--card-bg, #141823);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        .blog-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: border-color 0.4s;
+            pointer-events: none;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 40px rgba(14,165,233,0.06);
+        }
+        .blog-card:hover::after {
+            border-color: rgba(14,165,233,0.3);
+        }
+
+        /* Cover */
+        .blog-card__cover-wrap {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.03);
+        }
+        .blog-card__cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blog-card:hover .blog-card__cover {
+            transform: scale(1.06);
+        }
+        .blog-card__cover-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(30,58,138,0.08) 100%);
+        }
+        .blog-card__cover-placeholder i {
+            font-size: 3rem;
+            color: rgba(14,165,233,0.2);
+        }
+
+        /* Body */
+        .blog-card__body {
+            padding: 24px 24px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card__date {
+            font-size: 0.78rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .blog-card__date i { font-size: 0.72rem; }
+        .blog-card__title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+        .blog-card:hover .blog-card__title {
+            color: var(--accent-color);
+        }
+        .blog-card__excerpt {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card__read {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: gap 0.3s;
+        }
+        .blog-card:hover .blog-card__read {
+            gap: 12px;
+        }
+        .blog-card__read i {
+            font-size: 0.75rem;
+            transition: transform 0.3s;
+        }
+        .blog-card:hover .blog-card__read i {
+            transform: translateX(4px);
+        }
+
+        /* Empty */
+        .blog-empty {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(255,255,255,0.35);
+            font-size: 1.1rem;
+            grid-column: 1 / -1;
+        }
+        .blog-empty i {
+            display: block;
+            font-size: 3rem;
+            color: rgba(14,165,233,0.15);
+            margin-bottom: 20px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .blog-hero { padding: 110px 0 20px; }
+            .blog-hero__title { font-size: 1.75rem; }
+            .blog-section { padding-top: 12px; }
+            .blog-card:hover .blog-card__cover { transform: none; }
+            .blog-hero__sub { font-size: 1rem; }
+            .blog-section { padding: 0 0 60px; }
+            .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+            .blog-card__cover-wrap { height: 200px; }
+        }
+
+        /* ===== Animation ===== */
+        .blog-card { opacity: 0; transform: translateY(30px); animation: blogCardIn 0.5s forwards; }
+        .blog-card:nth-child(1) { animation-delay: 0.05s; }
+        .blog-card:nth-child(2) { animation-delay: 0.12s; }
+        .blog-card:nth-child(3) { animation-delay: 0.19s; }
+        .blog-card:nth-child(4) { animation-delay: 0.26s; }
+        .blog-card:nth-child(5) { animation-delay: 0.33s; }
+        .blog-card:nth-child(6) { animation-delay: 0.40s; }
+        @keyframes blogCardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Article Modal (full-page) ===== */
+        .article-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            background: var(--bg, #0f1116);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .article-modal.open {
+            transform: translateX(0);
+        }
+        .article-modal__header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(15,17,22,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 16px 0;
+        }
+        .article-modal__header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .article-modal__back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .article-modal__back:hover {
+            background: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+        .article-modal__back i {
+            transition: transform 0.3s;
+        }
+        .article-modal__back:hover i {
+            transform: translateX(-4px);
+        }
+        .article-modal__share-row {
+            display: flex;
+            gap: 8px;
+        }
+        .article-modal__share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .article-modal__share-btn:hover {
+            background: #0ea5e9;
+            color: #fff;
+            border-color: #0ea5e9;
+        }
+        .article-modal__body {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        .article-modal__cover {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .article-modal__title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .article-modal__meta {
+            display: flex;
+            gap: 20px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .article-modal__meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-modal__meta i { color: #0ea5e9; }
+        .article-modal__content {
+            color: rgba(255,255,255,0.82);
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+        .article-modal__content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(14,165,233,0.25);
+        }
+        .article-modal__content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 28px 0 12px;
+        }
+        .article-modal__content p { margin-bottom: 16px; }
+        .article-modal__content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .article-modal__content a {
+            color: #0ea5e9;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(14,165,233,0.3);
+            transition: border-color 0.3s;
+        }
+        .article-modal__content a:hover { border-bottom-color: #0ea5e9; }
+        .article-modal__content ul, .article-modal__content ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        .article-modal__content li { margin-bottom: 8px; }
+        .article-modal__content li::marker { color: #0ea5e9; }
+        .article-modal__content strong { color: #fff; }
+        .article-modal__content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .article-modal__content th, .article-modal__content td {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 14px;
+            text-align: left;
+        }
+        .article-modal__content th {
+            background: rgba(14,165,233,0.08);
+            font-weight: 600;
+            color: #fff;
+        }
+        .article-modal__content blockquote {
+            border-left: 3px solid #0ea5e9;
+            padding: 14px 20px;
+            margin: 20px 0;
+            background: rgba(14,165,233,0.06);
+            border-radius: 0 10px 10px 0;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+        }
+        .article-modal__cta {
+            margin-top: 48px;
+            background: var(--card-bg, #141823);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .article-modal__cta-icon {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            background: rgba(14,165,233,0.12);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #0ea5e9;
+        }
+        .article-modal__cta-text h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .article-modal__cta-text p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .article-modal__cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            background: #0ea5e9;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .article-modal__cta-btn:hover {
+            background: #38bdf8;
+            transform: translateY(-2px);
+        }
+        .article-modal__loading {
+            text-align: center;
+            padding: 120px 20px;
+            color: rgba(255,255,255,0.4);
+            font-size: 1.1rem;
+        }
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            z-index: 9999;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            transition: width 0.15s linear;
+            opacity: 0;
+        }
+        .reading-progress.visible { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .article-modal__title { font-size: 1.5rem; }
+            .article-modal__content { font-size: 1rem; }
+            .article-modal__body { padding: 24px 16px 60px; }
+            .article-modal__cta { flex-direction: column; text-align: center; }
+            .article-modal__cta-icon { margin: 0 auto; }
+            .article-modal__back span { display: none; }
+            .article-modal__back { padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== ШАПКА ==================== -->
+    <header class="header glass-header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="/" class="logo">
+                    <img src="/assets/img/logo2.png" alt="Boost Marine" class="logo__img" width="50" height="50">
+                    <div class="logo__text">
+                        <span class="logo__top">BOOST</span>
+                        <span class="logo__bottom">MARINE</span>
+                    </div>
+                </a>
+                <nav class="header-nav">
+                    <div class="dropdown">
+                        <a href="/uslugi" class="nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            Услуги <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/uslugi" class="dropdown-item">Все услуги</a>
+                            <a href="/uslugi#repair" class="dropdown-item">Ремонт и ТО</a>
+                            <a href="/uslugi#upgrade" class="dropdown-item">Дооснащение</a>
+                            <a href="/uslugi#diagnostics" class="dropdown-item">Диагностика</a>
+                            <a href="/uslugi#purchase" class="dropdown-item">Помощь в покупке</a>
+                            <a href="/uslugi#preservation" class="dropdown-item">Консервация</a>
+                            <a href="/uslugi#jetski" class="dropdown-item">Гидроциклы</a>
+                            <a href="/uslugi#other" class="dropdown-item">Другое</a>
+                        </div>
+                    </div>
+                    <a href="/magazin" class="nav__link">Магазин</a>
+                    <a href="/#works" class="nav__link">Работы</a>
+                    <a href="/#team" class="nav__link">Команда</a>
+                    <a href="/#contacts" class="nav__link">Контакты</a>
+                    <a href="/blog" class="nav__link active">Бортжурнал</a>
+                </nav>
+                <div class="header-contacts">
+                    <div class="header-contacts__top">
+                        <a href="tel:+7(977)714-05-09" class="header-phone">+7 (977) 714-05-09</a>
+                        <div class="header-social-row">
+                            <a href="https://wa.me/79777140509" class="header-social__link whatsapp" target="_blank" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <div class="telegram-dropdown">
+                                <button type="button" class="header-social__link telegram" aria-label="Telegram">
+                                    <i class="fab fa-telegram"></i>
+                                </button>
+                                <div class="telegram-dropdown__menu">
+                                    <a href="https://t.me/boostmarinegroup" target="_blank" class="telegram-dropdown__link">
+                                        <i class="fab fa-telegram"></i> Наши работы
+                                    </a>
+                                    <a href="https://t.me/BoostMarine" target="_blank" class="telegram-dropdown__link">
+                                        <i class="fab fa-telegram"></i> Написать
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="header-onsite">Выезд без ограничений</span>
+                </div>
+                <div class="mobile-contact-btn" id="mobile-contact">
+                    <button class="contact-toggle" aria-label="Показать контакты"><i class="fas fa-phone"></i></button>
+                    <div class="mobile-contact-dropdown">
+                        <a href="tel:+79777140509" class="mobile-contact-link"><i class="fas fa-phone"></i><span class="mobile-phone-number">+7 (977) 714-05-09</span></a>
+                        <a href="https://t.me/boostmarinegroup" target="_blank" class="mobile-contact-link"><i class="fab fa-telegram telegram-icon"></i> Наши работы</a>
+                        <a href="https://t.me/BoostMarine" target="_blank" class="mobile-contact-link"><i class="fab fa-telegram telegram-icon"></i> Написать</a>
+                        <a href="https://wa.me/79777140509" target="_blank" class="mobile-contact-link"><i class="fab fa-whatsapp whatsapp-icon"></i> Написать</a>
+                    </div>
+                </div>
+                <label class="hamburger" id="burger-wrapper">
+                    <input type="checkbox" id="burger-checkbox">
+                    <svg viewBox="0 0 32 32">
+                        <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                        <path class="line" d="M7 16 27 16"></path>
+                    </svg>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-nav">
+        <div class="mobile-menu__content">
+            <div class="mobile-dropdown">
+                <a href="/uslugi" class="mobile-menu__link mobile-menu__link--dropdown">
+                    Услуги <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
+                </a>
+                <div class="mobile-dropdown-menu">
+                    <a href="/uslugi" class="mobile-dropdown-item">Все услуги</a>
+                    <a href="/uslugi#repair" class="mobile-dropdown-item">Ремонт и ТО</a>
+                    <a href="/uslugi#upgrade" class="mobile-dropdown-item">Дооснащение</a>
+                    <a href="/uslugi#diagnostics" class="mobile-dropdown-item">Диагностика</a>
+                    <a href="/uslugi#purchase" class="mobile-dropdown-item">Помощь в покупке</a>
+                    <a href="/uslugi#preservation" class="mobile-dropdown-item">Консервация</a>
+                    <a href="/uslugi#jetski" class="mobile-dropdown-item">Гидроциклы</a>
+                    <a href="/uslugi#other" class="mobile-dropdown-item">Другое</a>
+                </div>
+            </div>
+            <a href="/magazin" class="mobile-menu__link">Магазин</a>
+            <a href="/#works" class="mobile-menu__link">Работы</a>
+            <a href="/#team" class="mobile-menu__link">Команда</a>
+            <a href="/#contacts" class="mobile-menu__link">Контакты</a>
+            <a href="/blog" class="mobile-menu__link active">Бортжурнал</a>
+        </div>
+    </nav>
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1 class="blog-hero__title">Бортжурнал</h1>
+        </div>
+    </section>
+
+    <!-- СТАТЬИ -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid" id="blogGrid">
+                <div class="blog-empty"><i class="fas fa-spinner fa-spin"></i>Загрузка статей...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="articleModal">
+        <div class="article-modal__header">
+            <div class="container">
+                <button class="article-modal__back" id="articleBack"><i class="fas fa-arrow-left"></i> <span>Назад</span></button>
+                <div class="article-modal__share-row" id="articleShare"></div>
+            </div>
+        </div>
+        <div class="article-modal__body" id="articleBody">
+            <div class="article-modal__loading"><i class="fas fa-spinner fa-spin"></i> Загрузка...</div>
+        </div>
+    </div>
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <a href="/" class="logo">
+                        <img src="/assets/img/logo2.png" alt="Boost Marine" class="logo__img" width="50" height="50">
+                        <div class="logo__text"><span class="logo__top">BOOST</span><span class="logo__bottom">MARINE</span></div>
+                    </a>
+                    <p class="footer__tagline">Ремонт водной техники любой сложности</p>
+                </div>
+                <div class="footer__nav-services-row">
+                    <div class="footer__nav">
+                        <h4 class="footer__title">Навигация</h4>
+                        <a href="/uslugi" class="footer__link">Услуги</a>
+                        <a href="/magazin" class="footer__link">Магазин</a>
+                        <a href="/#works" class="footer__link">Работы</a>
+                        <a href="/#team" class="footer__link">Команда</a>
+                        <a href="/#contacts" class="footer__link">Контакты</a>
+                        <a href="/blog" class="footer__link">Бортжурнал</a>
+                    </div>
+                    <div class="footer__services">
+                        <h4 class="footer__title">Контакты</h4>
+                        <a href="tel:+79777140509" class="footer__link" id="footer-phone">+7 (977) 714-05-09</a>
+                        <div class="footer__social">
+                            <a href="https://t.me/BoostMarine" class="social-icon telegram" target="_blank" id="footer-telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="https://wa.me/79777140509" class="social-icon whatsapp" target="_blank" id="footer-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <p>&copy; 2026 Boost Marine</p>
+                </div>
+                <p class="footer__note">Выезд без ограничений по региону</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js?v=20260526" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        var API = 'https://admin.boostmarine.ru/api.php';
+        var modal = document.getElementById('articleModal');
+        var modalBody = document.getElementById('articleBody');
+        var shareRow = document.getElementById('articleShare');
+        var backBtn = document.getElementById('articleBack');
+        var progressBar = document.getElementById('readingProgress');
+        var scrollHandler = null;
+        var contacts = {phone:'', telegram_channel_url:'', telegram_chat_url:'', whatsapp_url:''};
+
+        // ── Load contacts ──
+        try {
+            var cRes = await fetch(API + '?type=contacts');
+            var cJson = await cRes.json();
+            if (cJson.data) contacts = cJson.data;
+        } catch(e) {}
+
+        // ── Load articles grid ──
+        try {
+            var res = await fetch(API + '?type=articles');
+            var json = await res.json();
+            var articles = json.data || [];
+            var grid = document.getElementById('blogGrid');
+            if (!articles.length) {
+                grid.innerHTML = '<div class="blog-empty">Статей пока нет. Скоро здесь появятся полезные материалы!</div>';
+            } else {
+                grid.innerHTML = articles.map(function(a) {
+                    var cover = a.cover_image
+                        ? '<div class="blog-card__cover-wrap"><img class="blog-card__cover" src="https://admin.boostmarine.ru/' + a.cover_image + '" alt="' + a.title + '" loading="lazy"></div>'
+                        : '<div class="blog-card__cover-wrap"><div class="blog-card__cover-placeholder"><i class="fas fa-anchor"></i></div></div>';
+                    var date = a.published_at ? new Date(a.published_at).toLocaleDateString('ru-RU', {day:'numeric',month:'long',year:'numeric'}) : '';
+                    var excerpt = (a.excerpt || '').replace(/<[^>]*>/g, '').substring(0, 150);
+                    return '<a href="/blog/' + a.slug + '" class="blog-card" data-slug="' + a.slug + '">' +
+                        cover +
+                        '<div class="blog-card__body">' +
+                            (date ? '<div class="blog-card__date"><i class="far fa-calendar-alt"></i> ' + date + '</div>' : '') +
+                            '<div class="blog-card__title">' + a.title + '</div>' +
+                            '<div class="blog-card__excerpt">' + excerpt + '</div>' +
+                            '<span class="blog-card__read">Читать <i class="fas fa-arrow-right"></i></span>' +
+                        '</div></a>';
+                }).join('');
+            }
+        } catch(e) {
+            document.getElementById('blogGrid').innerHTML = '<div class="blog-empty">Ошибка загрузки статей</div>';
+        }
+
+        // ── Card click → open modal ──
+        document.getElementById('blogGrid').addEventListener('click', function(e) {
+            var card = e.target.closest('.blog-card');
+            if (!card) return;
+            e.preventDefault();
+            var slug = card.getAttribute('data-slug');
+            if (slug) openArticle(slug, true);
+        });
+
+        // ── Open article ──
+        async function openArticle(slug, pushState) {
+            modal.scrollTop = 0;
+            modalBody.innerHTML = '<div class="article-modal__loading"><i class="fas fa-spinner fa-spin"></i> Загрузка...</div>';
+            shareRow.innerHTML = '';
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            progressBar.classList.add('visible');
+            progressBar.style.width = '0%';
+
+            if (pushState) {
+                history.pushState({slug: slug}, '', '/blog/' + slug);
+            }
+
+            try {
+                var r = await fetch(API + '?type=article&slug=' + encodeURIComponent(slug));
+                if (!r.ok) throw new Error('Not found');
+                var j = await r.json();
+                var a = j.data;
+                if (!a) throw new Error('Not found');
+
+                // SEO
+                document.title = (a.seo_title || a.title) + ' | Boost Marine';
+                var md = document.querySelector('meta[name="description"]');
+                if (md && a.seo_description) md.setAttribute('content', a.seo_description);
+
+                var date = a.published_at
+                    ? new Date(a.published_at).toLocaleDateString('ru-RU', {day:'numeric', month:'long', year:'numeric'})
+                    : '';
+                var text = (a.content || '').replace(/<[^>]*>/g, '');
+                var readMin = Math.max(1, Math.round(text.trim().split(/\s+/).length / 200));
+                var cover = a.cover_image
+                    ? '<img class="article-modal__cover" src="https://admin.boostmarine.ru/' + a.cover_image + '" alt="' + a.title + '">'
+                    : '';
+
+                modalBody.innerHTML =
+                    cover +
+                    '<h1 class="article-modal__title">' + a.title + '</h1>' +
+                    '<div class="article-modal__meta">' +
+                        (date ? '<span><i class="far fa-calendar-alt"></i> ' + date + '</span>' : '') +
+                        '<span><i class="far fa-clock"></i> ' + readMin + ' мин. чтения</span>' +
+                    '</div>' +
+                    '<div class="article-modal__content">' + (a.content || '') + '</div>';
+
+                // Share buttons
+                var url = encodeURIComponent(window.location.href);
+                var title = encodeURIComponent(a.title);
+                var tgChannel = contacts.telegram_channel_url || 'https://t.me/boostmarinegroup';
+                var waUrl = contacts.whatsapp_url || 'https://wa.me/79777140509';
+                shareRow.innerHTML =
+                    '<a href="https://t.me/share/url?url=' + url + '&text=' + title + '" target="_blank" rel="noopener" class="article-modal__share-btn" title="Поделиться в Telegram"><i class="fab fa-telegram-plane"></i></a>' +
+                    '<a href="' + waUrl + '" target="_blank" rel="noopener" class="article-modal__share-btn" title="Написать в WhatsApp"><i class="fab fa-whatsapp"></i></a>' +
+                    '<a href="' + tgChannel + '" target="_blank" rel="noopener" class="article-modal__share-btn" title="Наш канал в Telegram"><i class="fab fa-telegram"></i></a>';
+
+                // Schema.org
+                var old = document.getElementById('articleSchema');
+                if (old) old.remove();
+                var schema = {
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": a.title,
+                    "datePublished": a.published_at || a.created_at,
+                    "dateModified": a.updated_at || a.created_at,
+                    "author": {"@type": "Organization", "name": "Boost Marine"},
+                    "publisher": {"@type": "Organization", "name": "Boost Marine"}
+                };
+                if (a.cover_image) schema.image = 'https://admin.boostmarine.ru/' + a.cover_image;
+                var sc = document.createElement('script');
+                sc.type = 'application/ld+json';
+                sc.id = 'articleSchema';
+                sc.textContent = JSON.stringify(schema);
+                document.head.appendChild(sc);
+
+                // Reading progress
+                if (scrollHandler) modal.removeEventListener('scroll', scrollHandler);
+                scrollHandler = function() {
+                    var h = modal.scrollHeight - modal.clientHeight;
+                    if (h > 0) progressBar.style.width = Math.min(100, (modal.scrollTop / h) * 100) + '%';
+                };
+                modal.addEventListener('scroll', scrollHandler);
+
+            } catch(err) {
+                modalBody.innerHTML = '<div class="article-modal__loading"><h2 style="color:#fff">Статья не найдена</h2><p style="color:rgba(255,255,255,0.5);margin-top:12px">Вернитесь к списку статей</p></div>';
+            }
+        }
+
+        // ── Close modal ──
+        function closeArticle() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            progressBar.classList.remove('visible');
+            progressBar.style.width = '0%';
+            document.title = 'Бортжурнал | Boost Marine';
+            var md = document.querySelector('meta[name="description"]');
+            if (md) md.setAttribute('content', 'Полезные статьи о ремонте, обслуживании и эксплуатации яхт, катеров и гидроциклов от специалистов Boost Marine.');
+            if (scrollHandler) { modal.removeEventListener('scroll', scrollHandler); scrollHandler = null; }
+            var old = document.getElementById('articleSchema');
+            if (old) old.remove();
+        }
+
+        backBtn.addEventListener('click', function() {
+            closeArticle();
+            history.pushState(null, '', '/blog');
+        });
+
+        // ── Escape key ──
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeArticle();
+                history.pushState(null, '', '/blog');
+            }
+        });
+
+        // ── Browser back/forward ──
+        window.addEventListener('popstate', function() {
+            var parts = window.location.pathname.split('/').filter(Boolean);
+            if (parts[0] === 'blog' && parts[1]) {
+                openArticle(parts[1], false);
+            } else {
+                closeArticle();
+            }
+        });
+
+        // ── Auto-open if URL is /blog/slug ──
+        var initParts = window.location.pathname.split('/').filter(Boolean);
+        if (initParts[0] === 'blog' && initParts[1]) {
+            openArticle(initParts[1], false);
+        }
+    });
+    </script>
+</body>
+</html>
